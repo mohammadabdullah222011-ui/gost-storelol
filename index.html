@@ -6,10 +6,10 @@
   <meta name="description" content="Gaming store for premium story game accounts, subscriptions, live offers, and fast delivery.">
   <meta name="keywords" content="gaming store, story games, ps accounts, xbox game pass, subscriptions, game offers">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="goste store">
+  <meta property="og:title" content="punisher store">
   <meta property="og:description" content="Premium game accounts, subscriptions, and live offers with fast delivery.">
   <meta property="og:type" content="website">
-  <title>goste store</title>
+  <title>punisher store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
   <header class="topbar">
     <div class="topbar-left">
       <button id="menuBtn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
-      <h1 class="brand">goste store</h1>
+      <h1 class="brand">punisher store</h1>
     </div>
 
     <div class="topbar-right">
@@ -129,5 +129,24 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.firebaseAuth = { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged };
+  </script>
 </body>
 </html>

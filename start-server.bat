@@ -13,7 +13,7 @@ if "%IP%"=="" set "IP=127.0.0.1"
 
 echo.
 echo ============================================
-echo   Goste Store Local Server
+echo   Punisher Store Local Server
 echo ============================================
 echo Open on phone:
 echo http://%IP%:5500/index.html

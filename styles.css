@@ -1,15 +1,15 @@
 :root {
-  --bg: #eff5ff;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --primary: #0f63f7;
-  --primary-dark: #0a45bc;
-  --text: #0a1e4d;
-  --muted: #5f74a3;
+  --primary: #000000;
+  --primary-dark: #333333;
+  --text: #000000;
+  --muted: #666666;
   --black: #080b12;
   --danger: #ffdedf;
   --danger-text: #982a2a;
-  --ring: 0 0 0 3px rgba(15, 99, 247, 0.18);
-  --shadow: 0 18px 38px rgba(15, 99, 247, 0.15);
+  --ring: 0 0 0 3px rgba(0, 0, 0, 0.18);
+  --shadow: 0 18px 38px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -25,12 +25,25 @@ body {
   color: var(--text);
   font-family: "Poppins", sans-serif;
   background:
-    radial-gradient(circle at 85% 15%, rgba(15, 99, 247, 0.12), transparent 36%),
-    linear-gradient(180deg, #eff5ff, #f7faff);
+    radial-gradient(circle at 85% 15%, rgba(0, 0, 0, 0.12), transparent 36%),
+    linear-gradient(180deg, #ffffff, #f5f5f5);
 }
 
 body.rtl {
   font-family: "Tajawal", sans-serif;
+}
+
+body.rtl .offers-marquee,
+body.rtl .testimonials-slider {
+  direction: ltr;
+}
+
+body.rtl .offers-marquee .marquee-track {
+  animation: moveOffers 24s linear infinite;
+}
+
+body.rtl .testimonials-slider .testimonials-track {
+  animation: slideTestimonials 26s linear infinite;
 }
 
 .topbar {
@@ -43,7 +56,7 @@ body.rtl {
   padding: 12px 18px;
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #d6e3ff;
+  border-bottom: 1px solid #cccccc;
 }
 
 .topbar-left,
@@ -59,11 +72,11 @@ body.rtl {
   font-weight: 800;
   text-transform: lowercase;
   letter-spacing: 0.08em;
-  background: linear-gradient(90deg, #0b3fae, #0f63f7, #6aa3ff);
+  background: linear-gradient(90deg, #000000, #333333, #666666);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 6px 18px rgba(15, 99, 247, 0.22);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 .menu-btn,
@@ -142,7 +155,6 @@ body.rtl {
   display: grid;
   place-items: center;
   background:
-    linear-gradient(120deg, rgba(9, 19, 55, 0.78), rgba(15, 99, 247, 0.38)),
     url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
 }
 
@@ -633,10 +645,10 @@ body.rtl {
   border: none;
   border-radius: 999px;
   padding: 12px 14px;
-  background: linear-gradient(135deg, #0f63f7, #0a45bc);
+  background: linear-gradient(135deg, #000000, #333333);
   color: #fff;
   font-weight: 800;
-  box-shadow: 0 16px 28px rgba(15, 99, 247, 0.35);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
   cursor: pointer;
 }
 

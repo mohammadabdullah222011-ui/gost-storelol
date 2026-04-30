@@ -26,7 +26,7 @@ const ADMIN_PASSWORD = "FB-Game-Admin-2026";
 const CURRENCY = "JD";
 const defaultBankSettings = {
   bankName: "Jordan Bank",
-  cardHolder: "Goste Store",
+  cardHolder: "Punisher Store",
   cardNumber: "4111111111111111",
   expiry: "12/30"
 };
@@ -35,7 +35,7 @@ const defaultEmailSettings = {
   serviceId: "",
   templateId: "",
   publicKey: "",
-  fromName: "Goste Store"
+  fromName: "Punisher Store"
 };
 
 function normalizeProduct(item, fallbackId = Date.now()) {
@@ -117,7 +117,7 @@ function setEmailSettings(settings) {
     serviceId: String(settings.serviceId || "").trim(),
     templateId: String(settings.templateId || "").trim(),
     publicKey: String(settings.publicKey || "").trim(),
-    fromName: String(settings.fromName || "").trim() || "Goste Store"
+    fromName: String(settings.fromName || "").trim() || "Punisher Store"
   }));
 }
 
@@ -943,7 +943,7 @@ function setupLogin() {
   if (!loginForm) return;
   const loginMessage = document.getElementById("loginMessage");
 
-  loginForm.addEventListener("submit", (event) => {
+  loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (localStorage.getItem(storageKeys.session)) {
       loginMessage.textContent = textMap[currentLang].alreadyLoggedIn;
@@ -960,20 +960,28 @@ function setupLogin() {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem(storageKeys.users) || "[]");
-    const matched = users.find((user) => normalizeIdentifier(user.identifier) === email && user.password === password);
-    if (!matched) {
-      loginMessage.textContent = textMap[currentLang].invalid;
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem(storageKeys.session, data.token);
+        loginMessage.textContent = textMap[currentLang].success;
+        loginMessage.className = "login-message success";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 900);
+      } else {
+        loginMessage.textContent = data.message || 'Login failed';
+        loginMessage.className = "login-message error";
+      }
+    } catch (error) {
+      loginMessage.textContent = 'Error: ' + error.message;
       loginMessage.className = "login-message error";
-      return;
     }
-
-    localStorage.setItem(storageKeys.session, email);
-    loginMessage.textContent = textMap[currentLang].success;
-    loginMessage.className = "login-message success";
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 900);
   });
 }
 
@@ -994,7 +1002,7 @@ async function sendVerificationEmail(toEmail, code) {
         template_params: {
           to_email: toEmail,
           verification_code: code,
-          store_name: emailSettings.fromName || "Goste Store"
+          store_name: emailSettings.fromName || "Punisher Store"
         }
       })
     });
@@ -1063,41 +1071,37 @@ function setupRegister() {
   }
 
   if (verifyConfirmBtn) {
-    verifyConfirmBtn.addEventListener("click", () => {
+    verifyConfirmBtn.addEventListener("click", async () => {
       if (!pendingSignup) return;
       const enteredCode = otpInputs.map((input) => input.value).join("");
-      if (Date.now() > pendingSignup.expiresAt) {
+      try {
+        const response = await fetch('http://localhost:3000/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: pendingSignup.email, code: enteredCode })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          closeVerifyModal();
+          registerForm.reset();
+          registerMessage.textContent = textMap[currentLang].codeVerified;
+          registerMessage.className = "login-message success";
+          pendingSignup = null;
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 800);
+        } else {
+          if (verifyMessage) {
+            verifyMessage.textContent = data.message || 'Verification failed';
+            verifyMessage.className = "login-message error";
+          }
+        }
+      } catch (error) {
         if (verifyMessage) {
-          verifyMessage.textContent = textMap[currentLang].codeExpired;
+          verifyMessage.textContent = 'Error: ' + error.message;
           verifyMessage.className = "login-message error";
         }
-        pendingSignup = null;
-        return;
       }
-      if (enteredCode !== pendingSignup.code) {
-        if (verifyMessage) {
-          verifyMessage.textContent = textMap[currentLang].codeInvalid;
-          verifyMessage.className = "login-message error";
-        }
-        return;
-      }
-
-      const users = JSON.parse(localStorage.getItem(storageKeys.users) || "[]");
-      users.push({
-        name: pendingSignup.name,
-        identifier: pendingSignup.email,
-        password: pendingSignup.password
-      });
-      localStorage.setItem(storageKeys.users, JSON.stringify(users));
-
-      closeVerifyModal();
-      registerForm.reset();
-      registerMessage.textContent = textMap[currentLang].codeVerified;
-      registerMessage.className = "login-message success";
-      pendingSignup = null;
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 800);
     });
   }
 
@@ -1121,41 +1125,26 @@ function setupRegister() {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem(storageKeys.users) || "[]");
-    if (users.some((user) => normalizeIdentifier(user.identifier) === email)) {
-      registerMessage.textContent = textMap[currentLang].accountExists;
+    try {
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        registerMessage.textContent = data.message;
+        registerMessage.className = "login-message success";
+        pendingSignup = { email };
+        openVerifyModal();
+      } else {
+        registerMessage.textContent = data.message || 'Registration failed';
+        registerMessage.className = "login-message error";
+      }
+    } catch (error) {
+      registerMessage.textContent = 'Error: ' + error.message;
       registerMessage.className = "login-message error";
-      return;
     }
-
-    const otpCode = String(Math.floor(100000 + Math.random() * 900000));
-    pendingSignup = {
-      name,
-      email,
-      password,
-      code: otpCode,
-      expiresAt: Date.now() + 5 * 60 * 1000
-    };
-    registerMessage.textContent = currentLang === "en" ? "Sending verification code..." : "جار إرسال كود التحقق...";
-    registerMessage.className = "login-message";
-    const emailResult = await sendVerificationEmail(email, otpCode);
-    if (!emailResult.ok) {
-      registerMessage.textContent = emailResult.reason === "config-missing"
-        ? textMap[currentLang].emailConfigMissing
-        : textMap[currentLang].codeSendFailed;
-      registerMessage.className = "login-message error";
-      pendingSignup = null;
-      return;
-    }
-    registerMessage.textContent = textMap[currentLang].codeSent;
-    registerMessage.className = "login-message success";
-    if (verifyHint) {
-      verifyHint.textContent = currentLang === "en"
-        ? `Enter the 6-digit code sent to ${email}.`
-        : `أدخل كود التحقق المكون من 6 أرقام المرسل إلى ${email}.`;
-    }
-    if (verifyCodePreview) verifyCodePreview.textContent = "• • • • • •";
-    openVerifyModal();
   });
 }
 
