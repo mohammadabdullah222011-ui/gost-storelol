@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaming store for premium story game accounts, subscriptions, live offers, and fast delivery.">
+  <meta name="keywords" content="gaming store, story games, ps accounts, xbox game pass, subscriptions, game offers">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="goste store">
+  <meta property="og:description" content="Premium game accounts, subscriptions, and live offers with fast delivery.">
+  <meta property="og:type" content="website">
+  <title>goste store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside id="sideMenu" class="side-menu">
+    <button id="closeMenuBtn" class="close-menu" aria-label="Close menu">&times;</button>
+    <nav>
+      <a href="#products" data-filter="pc" data-en="1. PC Games" data-ar="1. ألعاب بيسي">1. PC Games</a>
+      <a href="#products" data-filter="ps" data-en="2. PlayStation + Plus" data-ar="2. بلايستيشن + بلس">2. PlayStation + Plus</a>
+      <a href="#products" data-filter="xbox" data-en="3. Xbox + Game Pass" data-ar="3. اكس بوكس + قيم باس">3. Xbox + Game Pass</a>
+      <a href="#products" data-filter="subscriptions" data-en="4. Subscriptions" data-ar="4. الاشتراكات">4. Subscriptions</a>
+      <a href="#contact" data-en="5. Contact Us" data-ar="5. تواصل معنا">5. Contact Us</a>
+    </nav>
+  </aside>
+  <div id="menuBackdrop" class="menu-backdrop"></div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="menuBtn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <h1 class="brand">goste store</h1>
+    </div>
+
+    <div class="topbar-right">
+      <a class="icon-link login-link" href="login.html" title="Login">👤</a>
+      <a class="icon-link wishlist-link" href="wishlist.html" title="Wishlist">❤️<span id="wishlistCount">0</span></a>
+      <a class="icon-link cart-link" href="cart.html" title="Cart">🛒<span id="cartCount">0</span></a>
+      <button id="langBtn" class="lang-btn" type="button">AR</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2 data-en="Your gaming journey starts here" data-ar="رحلتك في الألعاب تبدأ من هنا">Your gaming journey starts here</h2>
+      <p data-en="Premium game accounts, trusted support, and instant delivery." data-ar="حسابات ألعاب مميزة، دعم موثوق، وتسليم سريع.">Premium game accounts, trusted support, and instant delivery.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="products" class="products section-pad">
+      <div class="section-title-wrap">
+        <h3 data-en="Story Games Collection" data-ar="مجموعة ألعاب التختيم">Story Games Collection</h3>
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-btn active" data-category="pc" data-en="PC" data-ar="بيسي">PC</button>
+        <button class="filter-btn" data-category="ps" data-en="PlayStation" data-ar="بلايستيشن">PlayStation</button>
+        <button class="filter-btn" data-category="xbox" data-en="Xbox" data-ar="اكس بوكس">Xbox</button>
+        <button class="filter-btn" data-category="subscriptions" data-en="Subscriptions" data-ar="الاشتراكات">Subscriptions</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="offers section-pad">
+      <div class="section-title-wrap">
+        <h3 data-en="Live Offers" data-ar="عروض مباشرة">Live Offers</h3>
+      </div>
+      <div class="offers-marquee">
+        <div class="marquee-track" id="offersTrack"></div>
+      </div>
+    </section>
+
+    <section class="why-us section-pad">
+      <div class="section-title-wrap">
+        <h3 data-en="Why Choose Us" data-ar="ليش تختارنا">Why Choose Us</h3>
+      </div>
+      <div class="why-grid">
+        <article class="why-card">
+          <h4 data-en="Trusted Accounts" data-ar="حسابات موثوقة">Trusted Accounts</h4>
+          <p data-en="Every account is checked before delivery for smooth activation." data-ar="كل حساب يتم فحصه قبل التسليم لضمان تشغيل سلس.">Every account is checked before delivery for smooth activation.</p>
+        </article>
+        <article class="why-card">
+          <h4 data-en="Fast Delivery" data-ar="تسليم سريع">Fast Delivery</h4>
+          <p data-en="Most orders are sent within minutes after successful payment." data-ar="معظم الطلبات يتم تسليمها خلال دقائق بعد الدفع الناجح.">Most orders are sent within minutes after successful payment.</p>
+        </article>
+        <article class="why-card">
+          <h4 data-en="Secure Checkout" data-ar="دفع آمن">Secure Checkout</h4>
+          <p data-en="Your order data is handled safely with clear purchase flow." data-ar="بيانات طلبك تتم معالجتها بأمان مع خطوات شراء واضحة.">Your order data is handled safely with clear purchase flow.</p>
+        </article>
+        <article class="why-card">
+          <h4 data-en="24/7 Support" data-ar="دعم 24/7">24/7 Support</h4>
+          <p data-en="Our team is ready anytime to help with login or delivery issues." data-ar="فريقنا جاهز دائمًا لمساعدتك في مشاكل الدخول أو التسليم.">Our team is ready anytime to help with login or delivery issues.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="testimonials section-pad">
+      <div class="section-title-wrap">
+        <h3 data-en="What Gamers Say" data-ar="آراء اللاعبين">What Gamers Say</h3>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonials-track" id="testimonialsTrack"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer-contact">
+    <div class="footer-inner">
+      <h4 data-en="Contact Us" data-ar="تواصل معنا">Contact Us</h4>
+      <div class="contact-links">
+        <a class="contact-link" href="https://instagram.com" target="_blank" rel="noopener">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@fadel.baibars.store</span>
+        </a>
+        <a class="contact-link" href="https://wa.me/962790000000" target="_blank" rel="noopener">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+962 79 000 0000</span>
+        </a>
+        <a class="contact-link" href="tel:+962790000000">
+          <span class="contact-label" data-en="Phone" data-ar="الهاتف">Phone</span>
+          <span class="contact-value">+962 79 000 0000</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

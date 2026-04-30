@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | goste store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cart-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="back-home" href="index.html">← <span data-en="Home" data-ar="الرئيسية">Home</span></a>
+      <h1 class="brand">goste store</h1>
+    </div>
+    <div class="topbar-right">
+      <button id="langBtn" class="lang-btn" type="button">AR</button>
+    </div>
+  </header>
+
+  <main class="login-main">
+    <section class="login-shell">
+      <div class="login-promo">
+        <h2 data-en="Create Your Gamer Account" data-ar="أنشئ حسابك كلاعب">Create Your Gamer Account</h2>
+        <p data-en="Fill in your details, then verify with the code to activate your account." data-ar="عبّي بياناتك وبعدها فعّل حسابك بكود التحقق.">Fill in your details, then verify with the code to activate your account.</p>
+      </div>
+      <div class="login-form-wrap">
+        <h3 data-en="Create Account" data-ar="إنشاء حساب">Create Account</h3>
+        <p class="login-note" data-en="Your account is created only after entering the verification code." data-ar="لن يتم إنشاء الحساب إلا بعد إدخال كود التحقق.">Your account is created only after entering the verification code.</p>
+        <form id="registerForm" class="login-form">
+          <label for="registerName" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+          <input id="registerName" type="text" placeholder="Fadel User" required>
+          <label for="registerEmail" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+          <input id="registerEmail" type="email" placeholder="you@example.com" required>
+          <label for="registerPassword" data-en="Password" data-ar="كلمة المرور">Password</label>
+          <input id="registerPassword" type="password" placeholder="Min 8 chars with number" minlength="8" required>
+          <label for="registerPasswordConfirm" data-en="Confirm Password" data-ar="تأكيد كلمة المرور">Confirm Password</label>
+          <input id="registerPasswordConfirm" type="password" placeholder="Repeat password" minlength="8" required>
+          <button type="submit" data-en="Create Account" data-ar="إنشاء الحساب">Create Account</button>
+          <p id="registerMessage" class="login-message"></p>
+          <a class="auth-link-switch" href="login.html" data-en="Already have an account? Sign In" data-ar="عندك حساب؟ سجل دخول">Already have an account? Sign In</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <section id="verifyModal" class="verify-modal">
+    <div class="verify-box">
+      <div class="verify-shine"></div>
+      <div class="verify-orbit verify-orbit--1"></div>
+      <div class="verify-orbit verify-orbit--2"></div>
+      <h3 data-en="Verify Your Account" data-ar="تحقق من حسابك">Verify Your Account</h3>
+      <p id="verifyHint" data-en="Enter the 6-digit verification code sent to your email." data-ar="أدخل كود التحقق المكون من 6 أرقام المرسل لبريدك.">Enter the 6-digit verification code sent to your email.</p>
+      <div class="verify-inputs">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+        <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+      </div>
+      <p id="verifyCodePreview" class="verify-code-preview">• • • • • •</p>
+      <p id="verifyMessage" class="login-message"></p>
+      <div class="verify-actions">
+        <button id="verifyCancelBtn" class="admin-btn admin-btn--muted" type="button" data-en="Cancel" data-ar="إلغاء">Cancel</button>
+        <button id="verifyConfirmBtn" class="admin-btn" type="button" data-en="Confirm Code" data-ar="تأكيد الكود">Confirm Code</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

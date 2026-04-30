@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | goste store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cart-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="back-home" href="index.html">← <span data-en="Home" data-ar="الرئيسية">Home</span></a>
+      <h1 class="brand">goste store</h1>
+    </div>
+    <div class="topbar-right">
+      <button id="langBtn" class="lang-btn" type="button">AR</button>
+    </div>
+  </header>
+
+  <main class="login-main">
+    <section class="login-shell">
+      <div class="login-promo">
+        <h2 data-en="Welcome Back Gamer" data-ar="أهلا بعودتك يا لاعب">Welcome Back Gamer</h2>
+        <p data-en="Sign in to access your cart, offers, and instant account delivery." data-ar="سجل الدخول للوصول إلى سلتك والعروض والتسليم السريع للحسابات.">Sign in to access your cart, offers, and instant account delivery.</p>
+      </div>
+      <div class="login-form-wrap">
+        <h3 data-en="Sign In" data-ar="تسجيل الدخول">Sign In</h3>
+        <p class="login-note" data-en="Enter your email and password to continue." data-ar="أدخل بريدك وكلمة المرور للمتابعة.">Enter your email and password to continue.</p>
+        <form id="loginForm" class="login-form">
+          <label for="email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" required>
+          <label for="password" data-en="Password" data-ar="كلمة المرور">Password</label>
+          <input id="password" type="password" placeholder="********" minlength="8" required>
+          <button type="submit" data-en="Sign In" data-ar="دخول">Sign In</button>
+          <p id="loginMessage" class="login-message"></p>
+          <a class="auth-link-switch" href="register.html" data-en="Create a new account" data-ar="إنشاء حساب جديد">Create a new account</a>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

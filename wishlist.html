@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist | goste store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cart-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="back-home" href="index.html">← <span data-en="Home" data-ar="الرئيسية">Home</span></a>
+      <h1 class="brand">goste store</h1>
+    </div>
+    <div class="topbar-right">
+      <a class="icon-link wishlist-link" href="wishlist.html" title="Wishlist">❤️<span id="wishlistCount">0</span></a>
+      <a class="icon-link cart-link" href="cart.html" title="Cart">🛒<span id="cartCount">0</span></a>
+      <button id="langBtn" class="lang-btn" type="button">AR</button>
+    </div>
+  </header>
+
+  <main class="cart-main">
+    <section class="cart-wrapper">
+      <h2 class="cart-title" data-en="Your Wishlist" data-ar="مفضلتك">Your Wishlist</h2>
+      <p class="cart-subtitle" data-en="Save your favorite game accounts and move them to cart anytime." data-ar="احفظ حسابات الألعاب المفضلة لديك وانقلها للسلة في أي وقت.">Save your favorite game accounts and move them to cart anytime.</p>
+      <div id="wishlistItems" class="cart-items"></div>
+      <p id="wishlistEmpty" class="empty-cart" data-en="Your wishlist is empty." data-ar="المفضلة فارغة.">Your wishlist is empty.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

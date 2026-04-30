@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | goste store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="cart-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="back-home" href="index.html">← <span data-en="Home" data-ar="الرئيسية">Home</span></a>
+      <h1 class="brand">goste store</h1>
+    </div>
+    <div class="topbar-right">
+      <a class="icon-link cart-link" href="cart.html" title="Cart">🛒<span id="cartCount">0</span></a>
+      <button id="langBtn" class="lang-btn" type="button">AR</button>
+    </div>
+  </header>
+
+  <main class="cart-main">
+    <section class="cart-wrapper">
+      <h2 id="cartTitle" class="cart-title" data-en="Your Cart" data-ar="سلة المشتريات">Your Cart</h2>
+      <p class="cart-subtitle" data-en="Review your selected game accounts before checkout." data-ar="راجع حسابات الألعاب المختارة قبل إتمام الشراء.">Review your selected game accounts before checkout.</p>
+      <div id="cartItems" class="cart-items"></div>
+      <p id="cartEmpty" class="empty-cart" data-en="Your cart is empty." data-ar="السلة فارغة.">Your cart is empty.</p>
+      <div class="cart-summary">
+        <p><span data-en="Total:" data-ar="الإجمالي:">Total:</span> <strong id="cartTotal">JD 0.00</strong></p>
+        <button id="buyNowBtn" class="buy-btn" data-en="Buy Now" data-ar="اشتر الآن">Buy Now</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="paymentModal" class="payment-modal">
+    <div class="payment-box">
+      <button id="closePaymentBtn" class="close-payment" aria-label="Close">&times;</button>
+      <h3 data-en="Select Payment Method" data-ar="اختر طريقة الدفع">Select Payment Method</h3>
+      <div class="payment-methods">
+        <label><input type="radio" name="paymentMethod" value="visa" checked> <span data-en="Visa" data-ar="فيزا">Visa</span></label>
+        <label><input type="radio" name="paymentMethod" value="mastercard"> <span data-en="MasterCard" data-ar="ماستر كارد">MasterCard</span></label>
+        <label><input type="radio" name="paymentMethod" value="paypal"> <span data-en="PayPal" data-ar="بايبال">PayPal</span></label>
+      </div>
+      <div id="cardFields" class="card-fields">
+        <label for="cardHolder" data-en="Card Holder Name" data-ar="اسم حامل البطاقة">Card Holder Name</label>
+        <input id="cardHolder" type="text" placeholder="Goste Store">
+
+        <label for="cardNumber" data-en="Card Number" data-ar="رقم البطاقة">Card Number</label>
+        <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
+
+        <div class="card-row">
+          <div>
+            <label for="cardExpiry" data-en="Expiry (MM/YY)" data-ar="تاريخ الانتهاء (MM/YY)">Expiry (MM/YY)</label>
+            <input id="cardExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY">
+          </div>
+          <div>
+            <label for="cardCvv" data-en="CVV" data-ar="رمز الأمان CVV">CVV</label>
+            <input id="cardCvv" type="password" inputmode="numeric" maxlength="4" placeholder="123">
+          </div>
+        </div>
+      </div>
+      <div id="paypalFields" class="card-fields hidden">
+        <label for="paypalEmail" data-en="PayPal Email" data-ar="بريد بايبال">PayPal Email</label>
+        <input id="paypalEmail" type="email" placeholder="name@example.com">
+        <label for="paypalRef" data-en="PayPal Transaction ID" data-ar="رقم عملية بايبال">PayPal Transaction ID</label>
+        <input id="paypalRef" type="text" placeholder="PAY-2026-0001">
+      </div>
+      <div id="bankReceiverInfo" class="bank-receiver-info"></div>
+      <p id="paymentError" class="payment-error"></p>
+      <button id="confirmPaymentBtn" class="buy-btn pay-confirm" data-en="Confirm Payment" data-ar="تأكيد الدفع">Confirm Payment</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
